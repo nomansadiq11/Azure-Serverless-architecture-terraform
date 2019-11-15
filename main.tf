@@ -113,3 +113,39 @@ resource "azurerm_servicebus_topic" "topicname" {
   enable_partitioning = true
 }
 
+
+
+# Web App services
+
+
+resource "azurerm_app_service_plan" "serverless_ASP" {
+  name                = "${random_string.fqdn.result}"
+  location            = "${var.location}"
+  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
+  kind                = "Linux"
+  reserved            = true
+  
+  sku {
+    tier = "Basic"
+    size = "B1"
+    capacity = 1
+  }
+}
+
+resource "azurerm_app_service" "serverlesswebapp_AS" {
+  name                = "${random_string.fqdn.result}"
+  location            = "${var.location}"
+  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
+  app_service_plan_id = "${azurerm_app_service_plan.applepaytest_ASP.id}"
+
+  site_config {
+    dotnet_framework_version    = "v4.0"
+    scm_type                    = "None"
+    linux_fx_version            = "DOTNETCORE|3.0"
+    ftps_state                  = "AllAllowed"
+  }
+
+  
+}
+
+# web app service
