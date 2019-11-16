@@ -13,6 +13,7 @@ The repo will generate the serverless architecture for the application which inc
 ## Resouces will be spin up 
 
 - Resouce Group
+- Web App Service
 - Storage Account
 - Azure Function
 - Services Bus

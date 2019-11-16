@@ -104,6 +104,15 @@ resource "azurerm_servicebus_queue" "messagequeue" {
 }
 
 
+resource "azurerm_resource_group" "testwebapp" {
+  name     = "teswebapp"
+  location = "${var.location}"
+
+  tags = {
+    environment = "${var.tag}"
+  }
+}
+
 
 resource "azurerm_servicebus_topic" "topicname" {
   name                = "topicname"
@@ -118,34 +127,34 @@ resource "azurerm_servicebus_topic" "topicname" {
 # Web App services
 
 
-resource "azurerm_app_service_plan" "serverless_ASP" {
-  name                = "${random_string.fqdn.result}"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
-  kind                = "Linux"
-  reserved            = true
+# resource "azurerm_app_service_plan" "serverless_ASP" {
+#   name                = "${random_string.fqdn.result}"
+#   location            = "${var.location}"
+#   resource_group_name = "${azurerm_resource_group.testwebapp.name}"
+#   kind                = "Linux"
+#   reserved            = true
   
-  sku {
-    tier = "Basic"
-    size = "B1"
-    capacity = 1
-  }
-}
+#   sku {
+#     tier = "Basic"
+#     size = "B1"
+#     capacity = 1
+#   }
+# }
 
-resource "azurerm_app_service" "serverlesswebapp_AS" {
-  name                = "${random_string.fqdn.result}"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
-  app_service_plan_id = "${azurerm_app_service_plan.applepaytest_ASP.id}"
+# resource "azurerm_app_service" "serverlesswebapp_AS" {
+#   name                = "${random_string.fqdn.result}"
+#   location            = "${var.location}"
+#   resource_group_name = "${azurerm_resource_group.testwebapp.name}"
+#   app_service_plan_id = "${azurerm_app_service_plan.ASP_Serverless_fn.id}"
 
-  site_config {
-    dotnet_framework_version    = "v4.0"
-    scm_type                    = "None"
-    linux_fx_version            = "DOTNETCORE|3.0"
-    ftps_state                  = "AllAllowed"
-  }
+#   site_config {
+#     dotnet_framework_version    = "v4.0"
+#     scm_type                    = "None"
+#     linux_fx_version            = "DOTNETCORE|3.0"
+#     ftps_state                  = "AllAllowed"
+#   }
 
   
-}
+# }
 
 # web app service
