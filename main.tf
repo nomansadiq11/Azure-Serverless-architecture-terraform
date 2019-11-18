@@ -34,6 +34,8 @@ resource "azurerm_app_service_plan" "ASP_Serverless_For_AF" {
     capacity = 1
   }
 
+   reserved = true
+
    tags = {
     environment = "${var.tag}"
   }
@@ -51,6 +53,8 @@ resource "azurerm_app_service_plan" "ASP_Serverless_For_AF2" {
     size = "B1"
     capacity = 1
   }
+
+   reserved = true
 
    tags = {
     environment = "${var.tag}"
@@ -159,6 +163,8 @@ resource "azurerm_app_service_plan" "ASP_For_WebApp" {
     size = "B1"
     capacity = 1
   }
+
+   reserved = true
 }
 
 resource "azurerm_app_service" "AS_Webapp" {
