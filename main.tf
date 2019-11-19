@@ -150,12 +150,12 @@ resource "azurerm_app_service" "AS_Webapp" {
   resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
   app_service_plan_id = "${azurerm_app_service_plan.ASP_For_WebApp.id}"
 
-  site_config {
-    dotnet_framework_version    = "v4.0"
-    scm_type                    = "None"
-    linux_fx_version            = "DOTNETCORE|3.0"
-    ftps_state                  = "AllAllowed"
-  }
+  # site_config {
+  #   dotnet_framework_version    = "v4.0"
+  #   scm_type                    = "None"
+  #   linux_fx_version            = "DOTNETCORE|3.0"
+  #   ftps_state                  = "AllAllowed"
+  # }
 
   
 }
