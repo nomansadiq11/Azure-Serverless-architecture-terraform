@@ -41,22 +41,6 @@ resource "azurerm_app_service_plan" "ASP_Serverless_For_AF" {
 
 
 
-resource "azurerm_app_service_plan" "ASP_Serverless_For_AF2" {
-  name                = "ASPFAF2"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
-
-  sku {
-    tier = "Basic"
-    size = "B1"
-    capacity = 1
-  }
-
-   tags = {
-    environment = "${var.tag}"
-  }
-}
-
 
 resource "azurerm_function_app" "AF_serverless" {
   name                      = "af${random_string.fqdn.result}"
@@ -152,7 +136,7 @@ resource "azurerm_app_service_plan" "ASP_For_WebApp" {
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
   kind                = "Linux"
-  
+  reserved            = true
   
   sku {
     tier = "Basic"
