@@ -152,7 +152,7 @@ resource "azurerm_app_service_plan" "ASP_For_WebApp" {
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
   kind                = "Linux"
-  reserved            = true
+  
   
   sku {
     tier = "Basic"
