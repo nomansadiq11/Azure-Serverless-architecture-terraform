@@ -132,7 +132,7 @@ resource "azurerm_function_app" "AF_serverless" {
 
 
 resource "azurerm_app_service_plan" "ASP_For_WebApp" {
-  name                = "ASPWEB${random_string.fqdn.result}"
+  name                = "ASPWEB01"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
   kind                = "Linux"
