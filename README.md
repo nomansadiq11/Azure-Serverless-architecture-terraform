@@ -20,4 +20,6 @@ The repo will generate the serverless architecture for the application which inc
     - Queue
     - Topic
 - Cosmos DB (SQL)
+- App Service Plan for Azure Function
+- App Service Plan for Web App
 

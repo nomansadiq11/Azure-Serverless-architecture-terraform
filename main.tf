@@ -8,6 +8,7 @@ resource "azurerm_resource_group" "serverless-rg" {
 }
 
 
+
 resource "azurerm_storage_account" "SA_serverless" {
   name                     = "sa${random_integer.ri.result}"
   resource_group_name      = "${azurerm_resource_group.serverless-rg.name}"
