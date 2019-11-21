@@ -9,6 +9,7 @@ The repo will generate the serverless architecture for the application which inc
 ## State
 
 - Local State
+- Remote State (remote_state.tf)
 
 ## Resouces will be spin up 
 
