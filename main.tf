@@ -53,6 +53,13 @@ resource "azurerm_function_app" "AF_serverless" {
    tags = {
     environment = "${var.tag}"
   }
+
+app_settings = {
+        ConnectionStringMasterQueueIn = "${replace(azurerm_servicebus_queue_authorization_rule.MasterQueueInPolicy.primary_connection_string, ";EntityPath=Q.Master.IN", "")}"
+        ConnectionStringPaypalPaymentTopic = "${replace(azurerm_servicebus_topic_authorization_rule.PayPalPaymentServiceBusPolicy.primary_connection_string, ";EntityPath=paypalpaymentservicebustopic", "")}"
+        
+    }
+
 }
 
 
