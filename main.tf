@@ -129,6 +129,40 @@ resource "azurerm_servicebus_topic" "topicname" {
 
 
 
+resource "azurerm_servicebus_subscription" "PayPalPaymentTopicSubscription" {
+  name                = "PayPalPaymentTopicSubscription"
+  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
+  namespace_name      = "${azurerm_servicebus_namespace.SBserverless.name}"
+  topic_name          = "${azurerm_servicebus_topic.topicname.name}"
+  max_delivery_count  = 10
+}
+
+
+resource "azurerm_servicebus_queue_authorization_rule" "MasterQueueInPolicy" {
+  name                = "MasterQueueInPolicy"
+  namespace_name      = "${azurerm_servicebus_namespace.SBserverless.name}"
+  queue_name          = "${azurerm_servicebus_queue.messagequeue.name}"
+  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
+
+  listen = true
+  send   = true
+  manage = true
+}
+
+
+
+resource "azurerm_servicebus_topic_authorization_rule" "PayPalPaymentServiceBusPolicy" {
+  name                = "PayPalPaymentServiceBusPolicy"
+  namespace_name      = "${azurerm_servicebus_namespace.SBserverless.name}"
+  topic_name          = "${azurerm_servicebus_topic.topicname.name}"
+  resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
+  listen              = true
+  send                = true
+  manage              = true
+}
+
+
+
 # Web App services
 
 
