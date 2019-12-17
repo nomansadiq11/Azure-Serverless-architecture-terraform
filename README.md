@@ -24,3 +24,15 @@ The repo will generate the serverless architecture for the application which inc
 - App Service Plan for Azure Function
 - App Service Plan for Web App
 
+
+
+
+## Variables
+
+| Variable      | Value | Description |
+| ------------- | ------------- | ------------- | 
+| resouce_group_name       | serverless   | resouce group name |
+| tag | Dev/Stage  | Give tag name to resoues |
+| location | West Europe  | Location where resouces will be created |
+| failover_location | North Europe  | Location for cosmos DB |
+
