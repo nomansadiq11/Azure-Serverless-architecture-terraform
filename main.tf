@@ -137,7 +137,7 @@ resource "azurerm_servicebus_topic" "topicname" {
 
 
 resource "azurerm_servicebus_subscription" "PayPalPaymentTopicSubscription" {
-  name                = "PayPalPaymentTopicSubscription"
+  name                = "TopicSubscription"
   resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
   namespace_name      = "${azurerm_servicebus_namespace.SBserverless.name}"
   topic_name          = "${azurerm_servicebus_topic.topicname.name}"
@@ -159,7 +159,7 @@ resource "azurerm_servicebus_queue_authorization_rule" "MasterQueueInPolicy" {
 
 
 resource "azurerm_servicebus_topic_authorization_rule" "PayPalPaymentServiceBusPolicy" {
-  name                = "PayPalPaymentServiceBusPolicy"
+  name                = "ServiceBusPolicy"
   namespace_name      = "${azurerm_servicebus_namespace.SBserverless.name}"
   topic_name          = "${azurerm_servicebus_topic.topicname.name}"
   resource_group_name = "${azurerm_resource_group.serverless-rg.name}"
