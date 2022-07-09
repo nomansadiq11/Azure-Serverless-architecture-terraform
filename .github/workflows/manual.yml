@@ -30,6 +30,5 @@ jobs:
       # run: echo "Hello ${{ github.event.inputs.name }}"
       run: |
         ls
-        cd ..
-        checkov -d Azure-Serverless-architecture-terraform
+        checkov -d 
 
