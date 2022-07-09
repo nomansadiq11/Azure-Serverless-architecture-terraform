@@ -6,3 +6,5 @@ resource "azurerm_resource_group" "serverless-rg" {
     environment = "${var.tag}"
   }
 }
+
+
