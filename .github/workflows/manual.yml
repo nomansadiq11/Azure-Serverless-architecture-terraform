@@ -25,9 +25,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
+    - uses: actions/checkout@v1
+    - name: scanning using checkov
       # run: echo "Hello ${{ github.event.inputs.name }}"
       run: |
-        apt-get update -y
+        ls
 
