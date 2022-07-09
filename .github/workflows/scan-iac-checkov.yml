@@ -9,7 +9,7 @@ name: Labeler
 on: [pull_request]
 
 jobs:
-  label:
+  install-tools:
 
     runs-on: ubuntu-latest
     permissions:
@@ -17,6 +17,11 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+     - uses: actions/checkout@v1
+     - run: |
+        echo "Download tools"
+        apt-get update -y
+        apt-get install python3
+
+      
+        
