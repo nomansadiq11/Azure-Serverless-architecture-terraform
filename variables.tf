@@ -30,3 +30,5 @@ resource "random_string" "fqdn" {
     upper   = false
     number  = false
 }
+
+
