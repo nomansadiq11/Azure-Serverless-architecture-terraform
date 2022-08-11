@@ -18,10 +18,18 @@ jobs:
 
     steps:
      - uses: actions/checkout@v1
+     
+     - uses: actions/setup-python@v2
+
+     - name: Install checkov and scan environment(s)
      - run: |
-        echo "Download tools"
-        apt-get update -y
-        apt-get install python3
+        
+        #!/bin/bash
+        set -e
+
+        pip install checkov 
+
+        checkov -d .
 
       
         
