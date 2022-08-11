@@ -13,14 +13,22 @@ jobs:
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v1
-    - name: scanning using checkov
-      # run: echo "Hello ${{ github.event.inputs.name }}"
-      run: |
-        ls
-        checkov -d 
+     - uses: actions/checkout@v1
+     
+     - uses: actions/setup-python@v2
+
+     - name: Install checkov and scan environment(s)
+     - run: |
+        
+        #!/bin/bash
+        set -e
+
+        pip install checkov 
+
+        checkov -d .
+
 
