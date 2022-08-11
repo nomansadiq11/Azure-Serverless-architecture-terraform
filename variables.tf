@@ -7,6 +7,7 @@ variable "location" {
 }
 
 
+
 variable "tag" {
   default = "Dev"
 }
