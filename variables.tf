@@ -1,10 +1,11 @@
 variable "resouce_group_name" {
-  default="Serverless"
+  default="Serverlessq"
 }
 
 variable "location" {
   default = "West Europe"
 }
+
 
 
 variable "tag" {
@@ -29,3 +30,5 @@ resource "random_string" "fqdn" {
     upper   = false
     number  = false
 }
+
+
