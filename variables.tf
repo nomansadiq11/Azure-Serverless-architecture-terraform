@@ -1,5 +1,5 @@
 variable "resouce_group_name" {
-  default="Serverless"
+  default="Serverlessq"
 }
 
 variable "location" {
